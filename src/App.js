@@ -1,94 +1,93 @@
 import React from "react";
-// import {BucketList} from "./BucketList";
-import BucketList from './BucketList';
-import "./style.css";
+import BucketList from "./BucketList";
 import styled from "styled-components";
 
-
-//클래스형 컴포넌트 생김새 
 class App extends React.Component {
-  constructor(props) { //App 컴포넌트의 state정의
-    super(props); //부모클래스에 있는거 가져옴
-    this.state = { //내 상태값.내데이터 - 
+  constructor(props) {
+    super(props);
+
+    this.state = {
       list: ["영화관 가기", "매일 책읽기", "수영 배우기"],
     };
 
-    // ref는 이렇게 선언합니다! 
-    this.text = React.createRef();
-}
- // ref는 이렇게 선언합니다! 
     this.text = React.createRef();
   }
 
-  componentDidMount(){
-		// 콘솔에서 확인해보자!
-    console.log(this.text);
-
+  componentDidMount() {  
   }
+
+  addBucket = () => {
+    console.log(this.text.current.value);
+    const new_item = this.text.current.value;
+    this.setState({list:[...this.state.list,new_item]});
+    // ...>스프레드 문법 [1,2,3] {a:b} 이런 요소들을 밖으로  빼낸다 -> [...this.state.list, 넣고싶던어떤값]
+  }
+
 
   render() {
-		console.log(this.text.current);
+    
     return (
-    <div className="App">
+      <AppWrap className="App">
         <Container>
-        <Title>내 버킷리스트</Title>
-        <Line/>
-        <hr className ="line"/>
-        <BucketList list_a={this.state.list}/>
+          <Title>내 버킷리스트</Title>
+          <Line />
+          <BucketList list={this.state.list} />
         </Container>
 
-        <div>
+        <InputWrap>
           <input type="text" ref={this.text}/>
-          onChange={() => {
-            console.log(this.text.current.value);
-
-          }}
-        </div>
-
-    </div>
+          <button onClick={this.addBucket}>오늘의 할 일 추가하기</button>
+        </InputWrap>
+      </AppWrap>
     );
   }
+}
 
+const AppWrap = styled.div`
+background-color: #eee;
+height : 100vh;
+width: 100vw;
+display: flex;
+flex-direction: column;
+`;
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <BucketList/>
-
-//     </div>
-//   );
-// }
-
-// const MyStyled = styled.div`
-//   width: 50vw;
-//   height: 150px;
-//   color: blue;
-//   background-color: ${(props) => (props.bg_Color? "red" : "purple")}
-//   p {
-//     color : blue;
-//   }
-//   &:hover {
-//     background-color: yellw'
-//   }
-// `;
 
 const Container = styled.div`
-background-color: #fff;
-width:50vw;
-max-width: 350px;
-margin:auto;
-height: 80vh;
-padding: 16px;
-border: 1px solid #ddd;
-border-radius: 10px;
+  background-color: #fff;
+  width: 50vw;  background-color: #fff;
+  width: 50vw;
+  max-width: 350px;
+  margin: auto;
+  height: 80vh;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-width: 350px;
+  margin: auto;
+  height: 80vh;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 `;
 
 const Title = styled.h1`
-color: slateblue;
-text-align: center;
+  color: slateblue;
+  text-align: center;
 `;
+
 const Line = styled.hr`
-margin: 16px 0px;
+  margin: 16px 0px;
+`;
+
+const InputWrap = styled.div`
+background-color: #fff;
+width: 50vw;
+max-width: 350px;
+margin: auto;
+height: 80vh;
+padding: 16px;
+border: 1px solid #ddd;
+border-radius: 5px;
 `;
 
 export default App;
