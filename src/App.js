@@ -29,15 +29,19 @@ class App extends React.Component {
     return (
       <AppWrap className="App">
         <Container>
-          <Title>내 버킷리스트</Title>
+          <Title>10조 오늘의 할 일 </Title>
+          <Line />
+          <input type="text" ref={this.text}/>
+          <input type="text" ref={this.text} />
+          <button onClick={this.addBucket}>추가하기</button>
           <Line />
           <BucketList list={this.state.list} />
         </Container>
 
-        <InputWrap>
+        {/* <InputWrap>
           <input type="text" ref={this.text}/>
           <button onClick={this.addBucket}>오늘의 할 일 추가하기</button>
-        </InputWrap>
+        </InputWrap> */}
       </AppWrap>
     );
   }
@@ -79,15 +83,15 @@ const Line = styled.hr`
   margin: 16px 0px;
 `;
 
-const InputWrap = styled.div`
-background-color: #fff;
-width: 50vw;
-max-width: 350px;
-margin: auto;
-height: 80vh;
-padding: 16px;
-border: 1px solid #ddd;
-border-radius: 5px;
-`;
+// const InputWrap = styled.div`
+// background-color: #fff;
+// width: 50vw;
+// max-width: 350px;
+// margin: auto;
+// height: 80vh;
+// padding: 16px;
+// border: 1px solid #ddd;
+// border-radius: 5px;
+// `;
 
 export default App;
