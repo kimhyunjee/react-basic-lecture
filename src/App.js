@@ -3,8 +3,9 @@ import React from "react";
 // import [컴포넌트 명] from [컴포넌트가 있는 파일경로];
 import BucketList from "./BucketList";
 import styled from "styled-components";
-import { Route } from "react-router-dom"
+import { Route , Switch } from "react-router-dom"
 import Detail from "./Detail";
+import NotFound from "./NotFound";
 
 function App() {
 
@@ -23,10 +24,17 @@ function App() {
         <Line />
         {/* 컴포넌트를 넣어줍니다. */}
         {/* <컴포넌트 명 [props 명]={넘겨줄 것(리스트, 문자열, 숫자, ...)}/> */}
+      <Switch>
         <Route path = "/" exact>
-        <BucketList list={list} />
-        </Route>
-        <Route path="/detail"></Route>
+          <BucketList list={list} />
+          </Route>
+          <Route path="/detail">
+            <Detail></Detail>
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
+      </Switch>
         
 
       </Container>
