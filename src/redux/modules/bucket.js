@@ -5,11 +5,12 @@ const CREATE = 'bucket/CREATE';
 
 //initial state 초기값
 const initialState = {
-    list: ["영화관 가기", "매일 책읽기", "수영 배우기"],
+    list: ["영화관 가기", "매일 책읽기", "수영 배우기","코딩하기"],
 };
 
 // Action Creators 액션타입에 대한 함수 생성
 export function createBucket(bucket) {
+  console.log("액션을 생성할거야 ! ");
     return {type: CREATE, bucket };
 }
 
@@ -19,6 +20,7 @@ export default function reducer(state = initialState, action = {}) {
     //파라미터에 ={} 하고 주는걸 기본값을준다고함 - 파라미터의 값이 없으면 빈 딕셔너리-오류방지위함
     switch (action.type) {
         case "bucket/CREATE": {
+          console.log("이제 값을 바꿀거야 ! ");
             const new_bucket_list = [...state.list, action.bucket];
             return {list: new_bucket_list};
             //return a'가 (바꿔서 보여줄값)들어가야하는데/원래있던 배열에 +되는것/위에 선언해줌

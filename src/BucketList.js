@@ -2,12 +2,18 @@
 import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom"
+import { useSelector } from "react-redux";
 
 
 const BucketList = (props) => {
   const history = useHistory();
-  console.log(props);
-  const my_lists = props.list;
+  // console.log(props);
+  // const my_lists = props.list;
+  const my_lists = useSelector((state) => state.bucket.list); //state.bucket.list 왜안댐
+  // (스토어가 가지고 있는 전체 데이터)=> 리턴되는값()
+  // console.log(data);
+
+  // return null;
   
   return (
     <ListStyle>

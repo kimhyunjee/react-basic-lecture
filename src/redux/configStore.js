@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from "redux";
-import bucket from ".modules/bucket";
+import Bucket from "./modules/bucket"
 
-const rootReducer = combineReducers({bucket});
+const rootReducer = combineReducers({Bucket});
 //나중에 리듀서가 여러개면 { 안에 , 써서 여러개 넣어주면 된다}
 
 const store = createStore(rootReducer);
